@@ -34,7 +34,7 @@ const loginFieldsCheck = check('email').custom(async (value, { req }) => {
   const validPassword = await compare(req.body.password, user.rows[0].password)
 
   if (!validPassword) {
-    throw new Error('Wrong password')
+    throw new Error('Incorrect password')
   }
 
   req.user = user.rows[0]
