@@ -3,4 +3,4 @@
 
 # do "npm start" in the /clientside directory
 
-# i dont think i need this To create a production build, use npm run build
+# to see database, go to SQL Shell (psql). use overarching postgres with password. \c clubhub_userauth then \d to see tables. table users; to see all registered email with encrypted logins.
