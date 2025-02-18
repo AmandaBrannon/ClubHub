@@ -4,13 +4,13 @@ const { compare } = require('bcryptjs')
 
 //password
 const password = check('password')
-  .isLength({ min: 6, max: 15 })
-  .withMessage('Password has to be between 6 and 15 characters.')
+  .isLength({ min: 6, max: 20 })
+  .withMessage('Password needs to be between 6 and 20 characters.')
 
 //email
 const email = check('email')
   .isEmail()
-  .withMessage('Please provide a valid email.')
+  .withMessage('Incorrect Fields')
 
 //check if email exists
 const emailExists = check('email').custom(async (value) => {
@@ -19,7 +19,7 @@ const emailExists = check('email').custom(async (value) => {
   ])
 
   if (rows.length) {
-    throw new Error('Email already exists.')
+    throw new Error('Incorrect Fields')
   }
 })
 
@@ -28,13 +28,13 @@ const loginFieldsCheck = check('email').custom(async (value, { req }) => {
   const user = await db.query('SELECT * from users WHERE email = $1', [value])
 
   if (!user.rows.length) {
-    throw new Error('Email does not exists.')
+    throw new Error('Incorrect Fields')
   }
 
   const validPassword = await compare(req.body.password, user.rows[0].password)
 
   if (!validPassword) {
-    throw new Error('Incorrect password')
+    throw new Error('Incorrect Fields')
   }
 
   req.user = user.rows[0]

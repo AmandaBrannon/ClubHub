@@ -1,12 +1,12 @@
-import Navbar from './navbar'
+import Navbar from './navbar';
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div style={{ backgroundColor: '#1d1f21', minHeight: '100vh', width: '100vw', color: 'white' }}>
       <Navbar />
-      <div className='container'>{children}</div>
+      <div className="container-fluid">{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

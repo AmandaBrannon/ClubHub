@@ -16,9 +16,18 @@ app.use(passport.initialize())
 
 //import routes
 const authRoutes = require('./routes/auth')
+const eventsRoutes = require("./routes/events");
+
+
+const clubsRoutes = require("./routes/clubs");
+
+app.use('/api', authRoutes)
+app.use("/api", clubsRoutes);
+
+
+app.use('/api', eventsRoutes);
 
 //initialize routes
-app.use('/api', authRoutes)
 
 //app start
 const appStart = () => {

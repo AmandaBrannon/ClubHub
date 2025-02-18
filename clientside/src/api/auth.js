@@ -1,5 +1,5 @@
 import axios from 'axios'
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true //change to true
 
 export async function onRegistration(registrationData) {
   return await axios.post(

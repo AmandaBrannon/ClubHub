@@ -1,2 +1,5 @@
 .env
 /node_modules
+/db
+/docker-compose.yml
+/package-lock.json
